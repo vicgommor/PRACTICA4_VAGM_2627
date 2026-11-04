@@ -30,7 +30,7 @@ class LauncherScreen extends StatelessWidget {
                 Navigator.push<void>(
                   context,
                   MaterialPageRoute<void>(
-                    builder: (BuildContext context) => PaisesScreen(),
+                    builder: (BuildContext context) => PaisesScreen(nombreContinente: 'Europa'),
                   ),
                 );
               },
