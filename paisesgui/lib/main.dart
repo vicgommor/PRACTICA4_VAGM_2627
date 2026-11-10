@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       theme: temaPaises,
       home: const Scaffold(
-        body: LauncherScreen(),
+        body: MyRegisterForm(),
       ),
     );
   }

@@ -29,6 +29,7 @@ class InfoPaisDetalle extends StatelessWidget {
     
 
     return Scaffold(
+      appBar: AppBar(title: Text("Población y tiempo")),
       body: SingleChildScrollView(
         child: Column(
 

@@ -4,9 +4,10 @@ import 'package:paisesgui/data/repositories/paises_repository.dart';
 import 'package:paisesgui/domain/entities/pais.dart';
 
 class InfoPaisGeneral extends StatelessWidget {
-  InfoPaisGeneral({super.key});
-
+  InfoPaisGeneral({super.key, required this.nombrePais});
+  final String nombrePais;
     // Referencia al repositorio, de donde obtendremos la lista de continentes
+  
   final PaisesRepository _repository = PaisesRepository();
 
 
@@ -17,6 +18,7 @@ class InfoPaisGeneral extends StatelessWidget {
     Pais pais = _repository.infoPais();
     
     return Scaffold(
+      appBar: AppBar(title: Text("Informacion General")),
       body: 
         SingleChildScrollView(
           child: Column(
