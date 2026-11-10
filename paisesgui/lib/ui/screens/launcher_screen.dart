@@ -13,7 +13,7 @@ class MyRegisterForm extends StatefulWidget {
 // Creamos una clase de tipo State
 class MyRegisterFormState extends State<MyRegisterForm> {
   // Para esta clase vamos a crear una clave global, de tipo
-  // FormState que nos sirva para identificar el widget en
+  // FormState que nos sirva para identificar el widget en 
   // el árbol de widgets y por tanto poder validar el formulario.
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -21,28 +21,23 @@ class MyRegisterFormState extends State<MyRegisterForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Card(
       child: Padding(
         padding: EdgeInsets.all(20.0),
-        child: Card(
-          child: Padding(
-            padding: EdgeInsets.all(20),
-            child: Form(
-              // Añadimos como clave del formulario la clave _formKey que hemos generado
-              key: _formKey,
-              // Organizamos los diferentes widgets del formulario en un ListView
-              child: ListView(
-                padding: const EdgeInsets.all(16.0),
-                children: <Widget>[
-                  // Para crear los distintos widgets hemos creado los tres métodos siguientes
-                  // de manera que aligeremos el código del método build:
-                  createEmailFormField(),
-                  createPasswordFormField(),
-                  createCheckboxConditionsFormField(),
-                  createSubmitButton(context),
-                ],
+        child: Form(
+          // Añadimos como clave del formulario la clave _formKey que hemos generado
+          key: _formKey,
+          // Organizamos los diferentes widgets del formulario en un ListView
+          child: ListView(
+            padding: const EdgeInsets.all(16.0),
+            children: <Widget>[
+              Column(
+                
               ),
-            ),
+              createEmailFormField(),
+              createPasswordFormField(),
+              createSubmitButton(context),
+            ],
           ),
         ),
       ),
@@ -84,9 +79,11 @@ class MyRegisterFormState extends State<MyRegisterForm> {
       },
 
       decoration: InputDecoration(
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-        icon: const Icon(Icons.email),
-        labelText: "Correo electrónico",
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          icon: const Icon(Icons.email),
+          labelText: "Correo electrónico",
       ),
     );
   }
@@ -112,53 +109,15 @@ class MyRegisterFormState extends State<MyRegisterForm> {
       },
 
       decoration: InputDecoration(
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-        icon: const Icon(Icons.lock),
-        labelText: "Contraseña",
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          icon: const Icon(Icons.lock),
+          labelText: "Contraseña",
       ),
     );
   }
 
-  FormField<bool> createCheckboxConditionsFormField() {
-    // Creamos un FormField para envolver al Checkbox
-    return FormField(
-      // Damos un valor inicial
-      initialValue: false,
-      // Definimos las validaciones sobre el valor
-      validator: (value) {
-        if (!value!) {
-          return 'Debe aceptar las condiciones';
-        }
-        return null;
-      },
-      // Constructor del widget. Recibimos en field
-      // el estado del FormField.
-      builder: (FormFieldState<dynamic> field) {
-        return CheckboxListTile(
-          // El valor del widget será el que tenga el FormField
-          value: field.value,
-          title: const Text("He leído y acepto las condiciones"),
-          // Utilizamos el subtítulo para indicar los mensajes de error
-          subtitle: Text(
-            field.errorText ?? "",
-            style: TextStyle(
-              fontStyle: FontStyle.normal,
-              fontSize: 12,
-              color: Colors.red[700],
-              height: 0.5,
-            ),
-          ),
-          // Cuando se haga click en el checkbox,
-          // se llama a onChanged, que habrá de notificar al
-          // formField que este ha cambiado de valor haciendo uso
-          // del método didChange (sin necesidad de llamar a setState!)
-          onChanged: (bool? value) {
-            field.didChange(value);
-          },
-        );
-      },
-    );
-  }
 
   // Botón para enviar el formulario previa validación
   Widget createSubmitButton(BuildContext context) {
@@ -173,16 +132,7 @@ class MyRegisterFormState extends State<MyRegisterForm> {
           // Si todas son válidas, el formulario es válido.
 
           if (_formKey.currentState?.validate() ?? false) {
-            // De momento, mostraremos un Snackbar para indicar
-            // que el formulario es correcto.
-
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(
-                  'Los datos se han procesado correctamente: ${_controlador.text}',
-                ),
-              ),
-            );
+            // otra pagina 
           }
         },
         child: const Text('iniciar sesión'),

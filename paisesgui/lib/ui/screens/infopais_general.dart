@@ -15,7 +15,7 @@ class InfoPaisGeneral extends StatelessWidget {
   Widget build(BuildContext context) {
 
     // Recogemos el país del repositorio
-    Pais pais = _repository.infoPais();
+    Pais? pais = _repository.infoPais();
     
     return Scaffold(
       appBar: AppBar(title: Text("Informacion General")),
@@ -27,7 +27,7 @@ class InfoPaisGeneral extends StatelessWidget {
             children: [
 
               Image(
-                image: NetworkImage(pais.imagen ?? ""),
+                image: NetworkImage(pais?.imagen ?? ""),
               ),
 
               Padding(

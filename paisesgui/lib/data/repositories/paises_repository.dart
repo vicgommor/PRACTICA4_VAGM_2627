@@ -51,8 +51,15 @@ class PaisesRepository {
 
   // TO-DO:
   // Implementar el método infoPais
-  Pais infoPais() {
-    return Pais(nombre: 'Sin implementar');
+  Pais? infoPais(String nombrePais) {
+    for(var cont in api.continentes){
+      for(var paisJSON in cont["paises"]) {
+        if (nombrePais == paisJSON["nombre"]) {
+          return Pais.fromJSON(paisJSON);
+        }
+      }
+    }
+    return null;
   }
 
 }
